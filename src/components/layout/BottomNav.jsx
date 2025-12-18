@@ -15,7 +15,7 @@ const BottomNav = () => {
   const isActive = (path) => location.pathname === path
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-[#112217] border-t border-white/10 md:hidden z-50">
+    <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#112217] border-t border-gray-200 dark:border-white/10 md:hidden z-50">
       <div className="flex items-center justify-around h-16">
         {navItems.map((item) => {
           const Icon = item.icon
@@ -35,11 +35,11 @@ const BottomNav = () => {
                 />
               )}
               <Icon
-                className={`${active ? 'text-primary' : 'text-white/60'}`}
+                className={`${active ? 'text-primary' : 'text-gray-500 dark:text-white/60'}`}
                 size={24}
               />
               <span
-                className={`text-xs mt-1 ${active ? 'text-primary' : 'text-white/60'}`}
+                className={`text-xs mt-1 ${active ? 'text-primary' : 'text-gray-500 dark:text-white/60'}`}
               >
                 {item.label}
               </span>

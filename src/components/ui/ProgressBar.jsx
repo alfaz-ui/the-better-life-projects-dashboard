@@ -5,7 +5,7 @@ const ProgressBar = ({ progress = 0, className = '' }) => {
 
   return (
     <div className={`w-full ${className}`}>
-      <div className="rounded-full bg-[#326744] h-2 overflow-hidden">
+      <div className="rounded-full bg-green-100 dark:bg-[#326744] h-2 overflow-hidden">
         <motion.div
           className="h-2 rounded-full bg-primary"
           initial={{ width: 0 }}

@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-white/80 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-white/80 mb-2">
           Email
         </label>
         <Input
@@ -56,7 +56,7 @@ const LoginForm = () => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-white/80 mb-2">
+        <label className="block text-sm font-medium text-gray-700 dark:text-white/80 mb-2">
           Password
         </label>
         <Input
@@ -70,7 +70,7 @@ const LoginForm = () => {
         )}
       </div>
 
-      <div className="text-sm text-white/60">
+      <div className="text-sm text-gray-600 dark:text-white/60">
         <p>Demo credentials:</p>
         <p>Email: demo@example.com</p>
         <p>Password: demo123</p>

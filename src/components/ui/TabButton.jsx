@@ -7,12 +7,12 @@ const TabButton = ({ active, onClick, children, className = '' }) => {
       className={`px-4 pb-3 pt-3 text-center border-b-2 transition-colors ${
         active
           ? 'border-primary'
-          : 'border-transparent hover:border-white/50'
+          : 'border-transparent hover:border-gray-300 dark:hover:border-white/50'
       } ${className}`}
     >
       <motion.span
         className={`text-sm font-medium block ${
-          active ? 'text-primary' : 'text-white/60 group-hover:text-white'
+          active ? 'text-primary' : 'text-gray-500 dark:text-white/60 group-hover:text-gray-900 dark:group-hover:text-white'
         }`}
         animate={{ opacity: active ? 1 : 0.6 }}
       >

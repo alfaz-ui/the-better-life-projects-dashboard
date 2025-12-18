@@ -48,11 +48,11 @@ const MetricInput = ({
         type="button"
         onClick={handleDecrement}
         disabled={disabled || localValue <= min}
-        className="flex h-7 w-7 items-center justify-center rounded-full bg-[#23482f] hover:bg-[#326744] cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 dark:bg-[#23482f] hover:bg-green-200 dark:hover:bg-[#326744] cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         whileHover={{ scale: disabled || localValue <= min ? 1 : 1.1 }}
         whileTap={{ scale: disabled || localValue <= min ? 1 : 0.9 }}
       >
-        <Minus className="h-4 w-4 text-white" />
+        <Minus className="h-4 w-4 text-gray-700 dark:text-white" />
       </motion.button>
       <input
         type="number"
@@ -61,17 +61,17 @@ const MetricInput = ({
         min={min}
         max={max}
         disabled={disabled}
-        className="text-base font-medium leading-normal w-6 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 focus:border-none border-none text-white [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className="text-base font-medium leading-normal w-6 p-0 text-center bg-transparent focus:outline-0 focus:ring-0 focus:border-none border-none text-gray-900 dark:text-white [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
       />
       <motion.button
         type="button"
         onClick={handleIncrement}
         disabled={disabled || localValue >= max}
-        className="flex h-7 w-7 items-center justify-center rounded-full bg-[#23482f] hover:bg-[#326744] cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 dark:bg-[#23482f] hover:bg-green-200 dark:hover:bg-[#326744] cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         whileHover={{ scale: disabled || localValue >= max ? 1 : 1.1 }}
         whileTap={{ scale: disabled || localValue >= max ? 1 : 0.9 }}
       >
-        <Plus className="h-4 w-4 text-white" />
+        <Plus className="h-4 w-4 text-gray-700 dark:text-white" />
       </motion.button>
     </div>
   )

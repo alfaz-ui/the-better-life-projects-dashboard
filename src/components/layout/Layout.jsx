@@ -8,9 +8,9 @@ const Layout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col">
+    <div className="relative flex h-screen w-full flex-col overflow-hidden">
       <Header onMenuClick={() => setIsMobileMenuOpen(true)} />
-      <div className="flex h-full w-full flex-1">
+      <div className="flex flex-1 w-full overflow-hidden">
         <Sidebar
           isMobileOpen={isMobileMenuOpen}
           onMobileClose={() => setIsMobileMenuOpen(false)}

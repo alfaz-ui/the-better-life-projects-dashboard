@@ -8,6 +8,7 @@ import Input from '../components/ui/Input'
 import { motion } from 'framer-motion'
 import { toast } from 'sonner'
 import { Moon, Sun, Download, Upload, Trash2, User, Bell } from 'lucide-react'
+import SettingsIllustration from '../components/illustrations/SettingsIllustration'
 
 const Settings = () => {
   const { user } = useAuth()
@@ -71,13 +72,18 @@ const Settings = () => {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] mb-2">
-          Settings
-        </h1>
-        <p className="text-[#92c9a4] text-base font-normal leading-normal">
-          Manage your account and preferences
-        </p>
+      <div className="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] mb-2">
+            Settings
+          </h1>
+          <p className="text-gray-600 dark:text-[#92c9a4] text-base font-normal leading-normal">
+            Manage your account and preferences
+          </p>
+        </div>
+        <div className="hidden md:block w-40 h-32 opacity-60">
+          <SettingsIllustration className="w-full h-full" />
+        </div>
       </div>
 
       <div className="space-y-6">
@@ -85,17 +91,18 @@ const Settings = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-[#112217] rounded-lg p-6 border border-white/10"
+          whileHover={{ y: -2 }}
+          className="bg-white dark:bg-[#112217] rounded-lg p-6 border border-gray-200 dark:border-white/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-[#23482f] rounded-lg">
               <User className="text-primary" size={24} />
             </div>
-            <h2 className="text-white text-2xl font-bold">Profile</h2>
+            <h2 className="text-gray-900 dark:text-white text-2xl font-bold">Profile</h2>
           </div>
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-white/80 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white/80 mb-2">
                 Name
               </label>
               <Input value={user?.name || ''} disabled />
@@ -120,7 +127,8 @@ const Settings = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-[#112217] rounded-lg p-6 border border-white/10"
+          whileHover={{ y: -2 }}
+          className="bg-white dark:bg-[#112217] rounded-lg p-6 border border-gray-200 dark:border-white/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-[#23482f] rounded-lg">
@@ -130,16 +138,16 @@ const Settings = () => {
                 <Sun className="text-primary" size={24} />
               )}
             </div>
-            <h2 className="text-white text-2xl font-bold">Appearance</h2>
+            <h2 className="text-gray-900 dark:text-white text-2xl font-bold">Appearance</h2>
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-white font-medium">Dark Mode</p>
-              <p className="text-[#92c9a4] text-sm">Toggle dark/light theme</p>
+              <p className="text-gray-900 dark:text-white font-medium">Dark Mode</p>
+              <p className="text-gray-600 dark:text-[#92c9a4] text-sm">Toggle dark/light theme</p>
             </div>
             <button
               onClick={toggleTheme}
-              className="relative w-14 h-8 bg-[#23482f] rounded-full transition-colors"
+              className="relative w-14 h-8 bg-green-100 dark:bg-[#23482f] rounded-full transition-colors"
             >
               <motion.div
                 className="absolute top-1 left-1 w-6 h-6 bg-primary rounded-full"
@@ -155,19 +163,20 @@ const Settings = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-[#112217] rounded-lg p-6 border border-white/10"
+          whileHover={{ y: -2 }}
+          className="bg-white dark:bg-[#112217] rounded-lg p-6 border border-gray-200 dark:border-white/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-[#23482f] rounded-lg">
               <Download className="text-primary" size={24} />
             </div>
-            <h2 className="text-white text-2xl font-bold">Data Management</h2>
+            <h2 className="text-gray-900 dark:text-white text-2xl font-bold">Data Management</h2>
           </div>
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 bg-[#1A2D22] rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-[#1A2D22] rounded-lg hover:bg-green-50 dark:hover:bg-[#23482f] hover:border border-gray-200 dark:border-white/10 transition-all duration-200">
               <div>
-                <p className="text-white font-medium">Export Data</p>
-                <p className="text-[#92c9a4] text-sm">
+                <p className="text-gray-900 dark:text-white font-medium">Export Data</p>
+                <p className="text-gray-600 dark:text-[#92c9a4] text-sm">
                   Download all your entries as JSON
                 </p>
               </div>
@@ -180,10 +189,10 @@ const Settings = () => {
                 {isExporting ? 'Exporting...' : 'Export'}
               </Button>
             </div>
-            <div className="flex items-center justify-between p-4 bg-[#1A2D22] rounded-lg">
+            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-[#1A2D22] rounded-lg hover:bg-green-50 dark:hover:bg-[#23482f] hover:border border-gray-200 dark:border-white/10 transition-all duration-200">
               <div>
-                <p className="text-white font-medium">Import Data</p>
-                <p className="text-[#92c9a4] text-sm">
+                <p className="text-gray-900 dark:text-white font-medium">Import Data</p>
+                <p className="text-gray-600 dark:text-[#92c9a4] text-sm">
                   Restore entries from a JSON file
                 </p>
               </div>
@@ -205,10 +214,10 @@ const Settings = () => {
                 </Button>
               </label>
             </div>
-            <div className="flex items-center justify-between p-4 bg-[#1A2D22] rounded-lg border border-error/20">
+            <div className="flex items-center justify-between p-4 bg-gray-50 dark:bg-[#1A2D22] rounded-lg border border-error/20">
               <div>
-                <p className="text-white font-medium text-error">Clear All Data</p>
-                <p className="text-[#92c9a4] text-sm">
+                <p className="text-gray-900 dark:text-white font-medium text-error">Clear All Data</p>
+                <p className="text-gray-600 dark:text-[#92c9a4] text-sm">
                   Permanently delete all entries
                 </p>
               </div>

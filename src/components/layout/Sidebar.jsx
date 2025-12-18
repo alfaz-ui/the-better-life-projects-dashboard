@@ -33,10 +33,11 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
   }
 
   const sidebarContent = (
-    <div className="flex flex-col h-full gap-4">
-      <div className="flex flex-col gap-4">
+    <div className="flex flex-col h-full">
+      {/* Scrollable top section */}
+      <div className="flex flex-col gap-4 flex-1 overflow-y-auto min-h-0">
         {user && (
-          <div className="flex items-center gap-3 px-4">
+          <div className="flex items-center gap-3 px-4 flex-shrink-0">
             <div
               className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 shrink-0"
               style={{
@@ -47,17 +48,17 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
               }}
             >
               {!user.avatar && (
-                <div className="w-full h-full flex items-center justify-center text-white text-sm font-medium">
+                <div className="w-full h-full flex items-center justify-center text-white dark:text-white text-sm font-medium">
                   {user.name?.charAt(0) || 'U'}
                 </div>
               )}
             </div>
             {!isCollapsed && (
               <div className="flex flex-col min-w-0">
-                <h1 className="text-white text-base font-medium leading-normal truncate">
+                <h1 className="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">
                   {user.name || 'User'}
                 </h1>
-                <p className="text-[#92c9a4] text-sm font-normal leading-normal truncate">
+                <p className="text-gray-600 dark:text-[#92c9a4] text-sm font-normal leading-normal truncate">
                   {user.school || 'School'}
                 </p>
               </div>
@@ -65,7 +66,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
           </div>
         )}
 
-        <nav className="flex flex-col gap-2">
+        <nav className="flex flex-col gap-2 flex-shrink-0">
           {navItems.map((item) => {
             const Icon = item.icon
             const active = isActive(item.path)
@@ -76,8 +77,8 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
                 onClick={onMobileClose}
                 className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
                   active
-                    ? 'bg-[#23482f] text-white'
-                    : 'text-white/80 hover:text-white hover:bg-white/5'
+                    ? 'bg-green-100 dark:bg-[#23482f] text-gray-900 dark:text-white'
+                    : 'text-gray-700 dark:text-white/80 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                 }`}
               >
                 <Icon
@@ -95,14 +96,15 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
         </nav>
       </div>
 
-      <div className="mt-auto flex flex-col gap-1">
+      {/* Fixed bottom section */}
+      <div className="flex flex-col gap-1 pt-4 border-t border-gray-200 dark:border-white/10 flex-shrink-0">
         <Link
           to="/settings"
           onClick={onMobileClose}
           className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
             isActive('/settings')
-              ? 'bg-[#23482f] text-white'
-              : 'text-white/80 hover:text-white hover:bg-white/5'
+              ? 'bg-green-100 dark:bg-[#23482f] text-gray-900 dark:text-white'
+              : 'text-gray-700 dark:text-white/80 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
           }`}
         >
           <Settings className="shrink-0" size={20} />
@@ -112,7 +114,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
         </Link>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-3 py-2 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+          className="flex items-center gap-3 px-3 py-2 text-gray-700 dark:text-white/80 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 rounded-lg transition-colors"
         >
           <LogOut className="shrink-0" size={20} />
           {!isCollapsed && (
@@ -126,7 +128,7 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex w-64 flex-col border-r border-white/10 bg-[#112217] p-4">
+      <aside className="hidden md:flex w-64 h-screen flex-col border-r border-gray-200 dark:border-white/10 bg-white dark:bg-[#112217] p-4 overflow-hidden">
         {sidebarContent}
       </aside>
 
@@ -146,11 +148,11 @@ const Sidebar = ({ isMobileOpen, onMobileClose }) => {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed left-0 top-0 h-full w-64 flex-col border-r border-white/10 bg-[#112217] p-4 z-[60] md:hidden"
+              className="fixed left-0 top-0 h-full w-64 flex-col border-r border-gray-200 dark:border-white/10 bg-white dark:bg-[#112217] p-4 z-[60] md:hidden"
             >
               <button
                 onClick={onMobileClose}
-                className="absolute top-4 right-4 text-white/80 hover:text-white"
+                className="absolute top-4 right-4 text-gray-700 dark:text-white/80 hover:text-gray-900 dark:hover:text-white"
               >
                 <X size={24} />
               </button>

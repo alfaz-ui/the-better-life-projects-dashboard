@@ -13,5 +13,26 @@
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+      to right,
+      #23482f 0%,
+      #326744 20%,
+      #23482f 40%,
+      #23482f 100%
+    );
+    background-size: 1000px 100%;
+  }
 }
 
